@@ -18,11 +18,11 @@ class NbaBattle:
 
     def home_team_logo(self):
         logo = self.generate_team_picture(self.teamA)
-        logo.show()
+        return logo
 
     def guest_team_logo(self):
         logo = self.generate_team_picture(self.teamB)
-        logo.show()
+        return logo
 
     def generate_team_picture(self, team):
         logo_path = f"teams/{team}.png"
@@ -34,5 +34,4 @@ class NbaBattle:
         width = (background_image.width - team_logo.width) // 2
         height = (background_image.height - team_logo.height) // 2
         background_image.paste(team_logo, (width, height), team_logo)
-        background_image.save(f"generate/{team}.png", format="png")
         return background_image
