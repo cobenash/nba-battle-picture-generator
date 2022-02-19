@@ -28,7 +28,7 @@ class NbaBattle:
         logo_path = f"teams/{team}.png"
         team_logo = Image.open(logo_path)
         color_thief = ColorThief(logo_path)
-        background_image = Image.new("RGB", (600, 600), color_thief.get_color(quality=1))
+        background_image = Image.new("RGB", (400, 400), color_thief.get_color(quality=1))
         team_logo = team_logo.convert("RGBA")
         background_image = background_image.convert("RGBA")
         width = (background_image.width - team_logo.width) // 2
