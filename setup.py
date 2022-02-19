@@ -6,12 +6,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='nbabattle',
-    packages=['nbabattle'],
     version='0.0.1',
     license='MIT',
     description='A lightweight python library to generate two nba team battle image.',
     long_description=long_description,
     long_description_content_type="text/markdown",
+    py_modules=['nbabattle'],
     author='victor yang',
     author_email='victor.yang@hellosanta.com.tw',
     url='https://github.com/cobenash/nba-battle-picture-generator',
@@ -19,8 +19,8 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/cobenash/nba-battle-picture-generator/issues"
     },
     install_requires=['colorthief', 'Pillow'],
-    keywords=["pypi", "nbabattle", "nba_battle"], #descriptive meta-data
-    classifiers=[                                   # https://pypi.org/classifiers
+    keywords=["pypi", "nbabattle", "nba_battle"],
+    classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Documentation',
