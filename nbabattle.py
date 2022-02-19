@@ -1,6 +1,6 @@
-from heapq import merge
-from PIL import Image, ImageColor
+from PIL import Image, ImageDraw
 from colorthief import ColorThief
+
 
 
 class NbaBattle:
@@ -17,32 +17,39 @@ class NbaBattle:
         return team
 
     def home_team_logo(self):
-        logo = self.generate_team_picture(self.teamA)
-        return logo
+        return self.generate_team_picture(self.teamA)
 
     def guest_team_logo(self):
-        logo = self.generate_team_picture(self.teamB)
-        return logo
+        return self.generate_team_picture(self.teamB)
 
     def generate_team_picture(self, team):
         logo_path = f"teams/{team}.png"
         team_logo = Image.open(logo_path)
         color_thief = ColorThief(logo_path)
-        background_image = Image.new("RGB", (400, 400), color_thief.get_color(quality=1))
+        color_code =  color_thief.get_color(quality=1)
+        background_image = Image.new("RGB", (320, 400), color_code)
         team_logo = team_logo.convert("RGBA")
         background_image = background_image.convert("RGBA")
         width = (background_image.width - team_logo.width) // 2
         height = (background_image.height - team_logo.height) // 2
         background_image.paste(team_logo, (width, height), team_logo)
-        return background_image
+        return {
+            "image" : background_image,
+            "rgb" : color_code,
+        }
 
     def create_battle_image(self):
-        teamA = self.home_team_logo()
-        teamB = self.guest_team_logo()
+        teamA = self.home_team_logo()["image"]
+        teamA_color = self.home_team_logo()["rgb"]
+        teamB = self.guest_team_logo()["image"]
+        teamB_color = self.guest_team_logo()["rgb"]
         teamA_size = teamA.size
         teamB_size = teamB.size
-        battle_image = Image.new('RGB',(2*teamA_size[0], teamA_size[1]), (250,250,250))
+        battle_image = Image.new('RGB',(2*teamA_size[0] + 80, teamA_size[1]), (250,250,250))
         battle_image.paste(teamA,(0,0))
-        battle_image.paste(teamB,(teamA_size[0],0))
+        battle_image.paste(teamB,(teamA_size[0] + 80,0))
+        draw = ImageDraw.Draw(battle_image)
+        draw.polygon([(teamA_size[0], 0), (teamA_size[0] + 79, 0), (teamA_size[0], teamA_size[1])], teamA_color)
+        draw.polygon([(teamA_size[0], teamA_size[1]), (teamA_size[0] + 79, teamA_size[1]), (teamA_size[0] + 79, 0)], teamB_color)
         return battle_image
 
