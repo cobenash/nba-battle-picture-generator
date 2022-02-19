@@ -19,3 +19,6 @@ battle.show()
 # Save to the folder
 battle.save("generate/gsw-det.png")
 ```
+
+### Notice
+Please use the team's abbreviation as the input.
