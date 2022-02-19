@@ -1,7 +1,21 @@
+![](demo/demo.png)
 # Generate NBA battle Picture Generator
+A lightweight python library to generate two nba team battle image.
 
-## Introduce
-The main purpose of this program is to generate two nba team battle photos
+
+## Installation
+```shell
+$ pip install nbabattle
+```
 
 ## Usage
-To be continue...
+```python
+from nbabattle import NbaBattle
+
+Photo = NbaBattle('GSW', 'DET')
+battle = Photo.create_battle_image()
+# Show an image
+battle.show()
+# Save to the folder
+battle.save("generate/gsw-det.png")
+```

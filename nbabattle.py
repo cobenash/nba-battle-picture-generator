@@ -44,7 +44,6 @@ class NbaBattle:
         teamB = self.guest_team_logo()["image"]
         teamB_color = self.guest_team_logo()["rgb"]
         teamA_size = teamA.size
-        teamB_size = teamB.size
         battle_image = Image.new('RGB',(2*teamA_size[0] + 60, teamA_size[1]), (250,250,250))
         battle_image.paste(teamA,(0,0))
         battle_image.paste(teamB,(teamA_size[0] + 60,0))
