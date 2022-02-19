@@ -30,4 +30,6 @@ setuptools.setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
     ],
+    include_package_data=True,
+    package_data={'': ['teams/*.png']},
 )
