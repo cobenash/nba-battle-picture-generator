@@ -35,3 +35,14 @@ class NbaBattle:
         height = (background_image.height - team_logo.height) // 2
         background_image.paste(team_logo, (width, height), team_logo)
         return background_image
+
+    def create_battle_image(self):
+        teamA = self.home_team_logo()
+        teamB = self.guest_team_logo()
+        teamA_size = teamA.size
+        teamB_size = teamB.size
+        battle_image = Image.new('RGB',(2*teamA_size[0], teamA_size[1]), (250,250,250))
+        battle_image.paste(teamA,(0,0))
+        battle_image.paste(teamB,(teamA_size[0],0))
+        return battle_image
+
