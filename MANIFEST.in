@@ -1,1 +1,3 @@
-include LICENSE *.py teams/*.png
+include LICENSE
+include *.md
+include src/nbabattle/teams/*.png

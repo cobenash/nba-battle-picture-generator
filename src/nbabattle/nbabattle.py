@@ -1,3 +1,4 @@
+import os
 from PIL import Image, ImageDraw
 from colorthief import ColorThief
 
@@ -23,7 +24,8 @@ class NbaBattle:
         return self.generate_team_picture(self.teamB)
 
     def generate_team_picture(self, team):
-        logo_path = f"teams/{team}.png"
+        dirname = os.path.dirname(__file__)
+        logo_path = os.path.join(dirname, f"./teams/{team}.png")
         team_logo = Image.open(logo_path)
         color_thief = ColorThief(logo_path)
         color_code =  color_thief.get_color(quality=1)
