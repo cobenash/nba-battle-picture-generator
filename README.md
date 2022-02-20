@@ -1,4 +1,4 @@
-![](demo/demo.png)
+![](src/nbabattle/demo/demo.png)
 # Generate NBA battle Picture Generator
 A lightweight python library to generate two nba team battle image.
 
