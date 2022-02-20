@@ -27,9 +27,13 @@ class NbaBattle:
         dirname = os.path.dirname(__file__)
         logo_path = os.path.join(dirname, f"./teams/{team}.png")
         team_logo = Image.open(logo_path)
+        w, h = team_logo.size
+        w_s = int(w/1.3)
+        w_h = int(h/1.3)
+        team_logo = team_logo.resize((w_s, w_h), Image.ANTIALIAS)
         color_thief = ColorThief(logo_path)
         color_code =  color_thief.get_color(quality=1)
-        background_image = Image.new("RGB", (340, 400), color_code)
+        background_image = Image.new("RGB", (285, 400), color_code)
         team_logo = team_logo.convert("RGBA")
         background_image = background_image.convert("RGBA")
         width = (background_image.width - team_logo.width) // 2
@@ -46,11 +50,11 @@ class NbaBattle:
         teamB = self.guest_team_logo()["image"]
         teamB_color = self.guest_team_logo()["rgb"]
         teamA_size = teamA.size
-        battle_image = Image.new('RGB',(2*teamA_size[0] + 60, teamA_size[1]), (250,250,250))
+        battle_image = Image.new('RGB',(2*teamA_size[0] + 30, teamA_size[1]), (250,250,250))
         battle_image.paste(teamA,(0,0))
-        battle_image.paste(teamB,(teamA_size[0] + 60,0))
+        battle_image.paste(teamB,(teamA_size[0] + 30,0))
         draw = ImageDraw.Draw(battle_image)
-        draw.polygon([(teamA_size[0], 0), (teamA_size[0] + 59, 0), (teamA_size[0], teamA_size[1])], teamA_color)
-        draw.polygon([(teamA_size[0], teamA_size[1]), (teamA_size[0] + 59, teamA_size[1]), (teamA_size[0] + 59, 0)], teamB_color)
+        draw.polygon([(teamA_size[0], 0), (teamA_size[0] + 29, 0), (teamA_size[0], teamA_size[1])], teamA_color)
+        draw.polygon([(teamA_size[0], teamA_size[1]), (teamA_size[0] + 29, teamA_size[1]), (teamA_size[0] + 29, 0)], teamB_color)
         return battle_image
 
