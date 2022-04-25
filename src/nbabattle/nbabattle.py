@@ -7,7 +7,7 @@ from colorthief import ColorThief
 class NbaBattle:
     TeamAbb = ['ATL', 'BOS', 'CLE', 'NOP', 'CHI', 'DAL', 'DEN', 'GSW', 'HOU', 'LAC', 'LAL', 'MIA', 'MIL', 'MIN',
                'BKN', 'NYK', 'ORL', 'IND', 'PHI', 'PHX', 'POR', 'SAC', 'SAS', 'OKC', 'TOR', 'UTA', 'MEM', 'WAS', 'DET', 'CHA']
-
+    ColorCode = {"ATL": "#bc2424"}
     def __init__(self, teamA, teamB):
         self.teamA = self._is_valid_team(teamA)
         self.teamB = self._is_valid_team(teamB)
