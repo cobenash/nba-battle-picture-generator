@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='nbabattle',
-    version='0.0.5',
+    version='0.0.7',
     license='MIT',
     description='A lightweight python library to generate two nba team battle image.',
     long_description=long_description,
